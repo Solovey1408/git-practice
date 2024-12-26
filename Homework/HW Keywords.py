@@ -40,8 +40,8 @@ finally:
 
 def test_max_number():
     assert max_number (5, 6) == 6 ,'Число не равно 6'
-    assert max_number (5, 6) < 7 , 'Число не меньше 7'
-    assert max_number (5, 6) > 5  ,'Число не больше 5'
+    assert max_number (-6, 6) == 6 , 'Число не равно 6'
+    assert max_number (6, 6) == 6  ,'Число не равно 6'
 
 test_max_number()
 print("Тесты пройдены!")
