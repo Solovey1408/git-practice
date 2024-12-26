@@ -3,15 +3,6 @@ def max_number(num1, num2):
         return num1
     else:
         return num2
-try:
-    num1 = int(input("Введите первое число: "))
-    num2 = int(input("Введите второе число: "))
-    for num in max_number(num1, num2):
-        print(num)
-except ValueError:
-    print("Вы ввели не число!")
-finally:
-    print("Завершение программы")
 
 
 def empty_function():
@@ -22,6 +13,21 @@ def even_numbers(n):
     for i in range(n + 1):
         if i % 2 == 0:
             yield i
+
+
+try:
+    num1 = int(input("Введите первое число: "))
+    num2 = int(input("Введите второе число: "))
+
+    result = max_number(num1, num2)
+
+    print(result)
+
+except ValueError:
+    print("Вы ввели не число!")
+finally:
+    print("Функция max_number выполнена")
+
 try:
     user_input = int(input("Ввод числа: "))
     for num in even_numbers(user_input):
@@ -29,13 +35,13 @@ try:
 except ValueError:
     print("Вы ввели не число!")
 finally:
-    print("Завершение программы")
+    print("Функция even_numbers выполнена")
 
 
 def test_max_number():
-    assert 5 == 5, "Условие теста не выполняется!"
-    assert 5 >= 0, "Условие теста не выполняется!"
-    assert 5 <= 100, "Условие теста не выполняется!"
+    assert max_number (5,6) < 0, "Число не является отрицательным"
+    assert max_number (-4, -6) > 0, "Число является отрицательным"
+    assert max_number (155,168) <= 100, "Число меньше или равно 100"
 
 test_max_number()
 print("Тесты пройдены!")
