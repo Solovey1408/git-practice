@@ -39,9 +39,9 @@ finally:
 
 
 def test_max_number():
-    assert max_number (5,6) < 0, "Число не является отрицательным"
-    assert max_number (-4, -6) > 0, "Число является отрицательным"
-    assert max_number (155,168) <= 100, "Число меньше или равно 100"
+    assert max_number (5, 6) == 6 ,'Число не равно 6'
+    assert max_number (5, 6) < 7 , 'Число не меньше 7'
+    assert max_number (5, 6) > 5  ,'Число не больше 5'
 
 test_max_number()
 print("Тесты пройдены!")
