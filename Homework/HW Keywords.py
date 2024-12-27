@@ -15,6 +15,15 @@ def even_numbers(n):
             yield i
 
 
+def test_max_number():
+    assert max_number(5, 6) == 6, 'Число не равно 6'
+    assert max_number(-6, 6) == 6, 'Число не равно 6'
+    assert max_number(6, 6) == 6, 'Число не равно 6'
+
+
+test_max_number()
+print("Тесты пройдены!")
+
 try:
     num1 = int(input("Введите первое число: "))
     num2 = int(input("Введите второе число: "))
@@ -36,12 +45,3 @@ except ValueError:
     print("Вы ввели не число!")
 finally:
     print("Функция even_numbers выполнена")
-
-
-def test_max_number():
-    assert max_number (5, 6) == 6 ,'Число не равно 6'
-    assert max_number (-6, 6) == 6 , 'Число не равно 6'
-    assert max_number (6, 6) == 6  ,'Число не равно 6'
-
-test_max_number()
-print("Тесты пройдены!")
