@@ -1,8 +1,8 @@
-question_1 = str(input('Вам есть 18 лет: '))
-question_2 = str(input('Вы гражданин страны: '))
-question_3 = str(input('Вы были дисквалифицированы: '))
+question_1 = str(input('Вам есть 18 лет: ')).lower()
+question_2 = str(input('Вы гражданин страны: ')).lower()
+question_3 = str(input('Вы были дисквалифицированы: ')).lower()
 
-if question_1 == 'Да' and question_2 == 'Да' and question_3 == 'Нет':
+if question_1 == 'да' and question_2 == 'да' and question_3 == 'нет':
     print('Вы допущены к выборам')
 else:
     print('Вы не допущены к выборам')
