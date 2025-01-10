@@ -6,22 +6,15 @@ text_without_sign = "".join(char for char in text if char not in sign) #Объе
 #используя "" в качестве разделителя (условие for чтобы убрать знаки из переменной sign)
 
 split_text = text_without_sign.split() #split - Разбивает предложение на список слов ['слово', 'слово', 'слово']
-
-#count = 0 #счетчик слов, который изначально 0
-#for char in split_text: #char - это один элемент в списке
-#    count += 1 #счетчик слов, который прибавляет один после каждого слова
-words_counter = len(list(split_text))
+words_counter = len(split_text)
 
 print("Кол-во слов в тексте:", words_counter) #Вывод переменной, к которой прибавили все слова в списке
-#print("Кол-во слов в тексте:", count) #Вывод переменной, к которой прибавили все слова в списке
 
 #ПОИСК САМОГО ДЛИННОГО СЛОВА В ТЕКСТЕ
 longest_word = ""
-max_length = 0
 
 for word in split_text:
-    if len(word) > max_length:
-        max_length = len(word)
+    if len(word) > len(longest_word):
         longest_word = word
 print("Самое длинное слово:", longest_word)
 
@@ -44,9 +37,6 @@ for word in split_text:
         word_count[word] = 1
 
 for word, count in word_count.items():
-        print(f"Счетчик слов:'{word}':{count}")
+    print(f"Счетчик слов:'{word}':{count}")
 
-#vowels_count =  sum(letter in vowels for letter in text)
-#print(s.vowels_count("aeёиоуыэюя"))
-#print("Количество дублирования слов:", counting_words)
 #Что ? Где ! Когда .
