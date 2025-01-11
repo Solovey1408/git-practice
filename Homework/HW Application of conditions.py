@@ -38,6 +38,7 @@ def even_numbers():
     return sum_number
 
 
+print(even_numbers())
   # Создайте список, содержащий квадраты всех нечетных чисел от 1 до 10, используя генератор списка.
   # square_odd_numbers = [number ** 2 for number in range(1, 11) if number % 2 != 0]
 
@@ -55,22 +56,22 @@ print(square())
   # Напишите программу, которая просит пользователя ввести число и продолжает запрашивать числа, пока
   # пользователь не введет отрицательное число. Затем программа должна вывести количество введенных чисел.
 def count_positive_numbers():
+
     count = 0
 
-    while True:
-        try:
+
+    try:
+        while True:
             in_number = int(input("Введите число: "))  #Запрос числа у пользователя
             if in_number < 0:  # Если число отрицательное
-                break  # Прерываем цикл
+                break # Прерываем цикл
             count += 1
-        except ValueError:
-            print("Введите корректное число.")
-        else:
-            print(f"Количество введеных чисел: {count} ")
+    except ValueError:
+        print("Введено некорректное значение!")
+    finally:
+        print(f"Количество введенных чисел: {count} ")
 
-
-even_numbers()
-
-square()
 
 count_positive_numbers()
+even_numbers()
+square()
