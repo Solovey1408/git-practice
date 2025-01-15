@@ -1,10 +1,13 @@
 try:
     user_num_1 = float(input("Введите первое число: "))
     user_num_2 = float(input("Введите второе число: "))
+
     message = "Выберите математическую операцию"
 
     correct_operations = '+-/*'
+
     operation = input(message)
+
     while operation not in correct_operations:
         print('Такая операция недоступна.Повторите попытку.')
         operation = input(message)
