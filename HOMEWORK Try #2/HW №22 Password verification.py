@@ -6,9 +6,8 @@ user_password = '123qwerty456'
 
 in_password = str(input("Введите пароль: "))
 
-while in_password == user_password:
-    print("Пароль принят!")
-    break
-while in_password != user_password:
+if in_password != user_password:
     print("Пароль не верный!")
-    break
+
+else:
+    print("Пароль принят!")
