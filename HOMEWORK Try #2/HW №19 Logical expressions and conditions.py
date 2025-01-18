@@ -5,12 +5,16 @@
 try:
     question_1 = str(input("Вам есть 18?: ")).lower().strip()
     question_2 = str(input("У вас есть гражданство?: ")).lower().strip()
-    question_3 = str(input("Вы были дисквалифицированы ранее?: ")).lower().strip()
+    question_3 = str(input("У вас есть судимость?: ")).lower().strip()
+
     if question_1 == "да" and question_2 == "да" and question_3 == "нет":
         print("Вам можно голосовать на выборах!")
+
     else:
         print("Вы не можете голосовать на выборах!")
+
 except ValueError:
     print("Введен не корректный ответ")
+
 finally:
     print("Завершение работы программы")
