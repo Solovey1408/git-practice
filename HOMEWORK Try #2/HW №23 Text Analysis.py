@@ -1,49 +1,46 @@
 # Напишите программу, которая анализирует текст, введенный пользователем, и выполняет следующие действия:
-user_in_text = str(input('Введите текст: ')).lower() #Пользователь вводит строку lower переводит строку в нижний регистр
+def text_processing():
+    user_in_text = user_in_text.lower()
+    signs = '!,.?@#$%^&*(){}[]:;'
+    without_sign = ''.join(i for i in user_in_text if i not in signs)
+    return without_sign
 
-signs = '!,.?@#$%^&*(){}[]:;' # знаки которые нужно удалить из строки
+def count_words_in_string(): # 1. Подсчитывает количество слов в тексте.
+    words = without_sign.split()
+    count_words = len(words)
+    return count_words and words
 
-delete_sign = ''.join(i for i in user_in_text if i not in signs) # удаляем знаки из строки, с помощью условия с перебором символов
+def longest_word():
+    long_word = ""
+    for i in words:
+        if len(i) > len(long_word):
+            long_word = i
+    return long_word
 
-words = delete_sign.split() #разбиение строки на список слов []
+def counting_vowels():
+    vowels = 'аеёиоуыэюя'
+    consonants = 'цкнгшщзхъфвпрлджчсмтьб'
+    delete_consonants = ''.join(i for i in without_sign if i not in consonants)
+    delete_consonants_without_space = delete_consonants.replace(" ","")
+    number_of_vowels = len(delete_consonants_without_space)
+    return number_of_vowels
 
-# 1. Подсчитывает количество слов в тексте.
-print(f"Количество слов в тексте: {(len(words))}") #считаем слова через len
 
-# 2. Определяет самое длинное слово в тексте.
-longest_word = "" #переменная для использования при выводе
+def counting_words():
+    words_and_count = []
 
-for i in words: # перебор списка со словами по каждому слову
+    for word in words:
+        count = 0
 
-    if len(i) > len(longest_word): #условие при котором, сравниваются все слова i в списке между собой
+        if word in words:
+            count += 1
 
-        longest_word = i #если через условие, какое-то слово i больше другого, он становится переменной longest_word
+        if word not in words_and_count:
+            words_and_count.append(word)
+        return words_and_count and word and count
 
-print("Самое длинное слово:", longest_word) #вывод самого длинного слова
 
-# 3. Подсчитывает количество гласных букв (а,е,ё,и,о,у,ы,э,ю,я) в тексте.
+user_in_text = str(input('Введите текст: '))
 
-vowels = 'аеёиоуыэюя' # все гласные
-
-consonants = 'цкнгшщзхъфвпрлджчсмтьб' #все согласные
-
-delete_consonants = ''.join(i for i in delete_sign if i not in consonants) #заменяем все согласные на пробелы
-
-delete_consonants_without_space = delete_consonants.replace(" ","") #удаляем все пробелы
-
-print("Количество гласных:", len(delete_consonants_without_space)) #выводим количество гласных через len
-
-# 4. Выводит количество раз, которое каждое слово встречается в тексте.
-
-words_and_count = []
-
-for word in words:
-    count = 0
-
-    if word in words:
-        count += 1
-
-    if word not in words_and_count:
-        words_and_count.append(word)
-
-        print(f"Счетчик слов:'{word}':{count}")
+without_sign = text_processing(user_in_text)
+print(f'Строка без знаков: {without_sign}')
