@@ -38,9 +38,3 @@ def counting_words():
         if word not in words_and_count:
             words_and_count.append(word)
         return words_and_count and word and count
-
-
-user_in_text = str(input('Введите текст: '))
-
-without_sign = text_processing(user_in_text)
-print(f'Строка без знаков: {without_sign}')
