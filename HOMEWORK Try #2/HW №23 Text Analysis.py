@@ -3,7 +3,7 @@ input_text = str(input("Введите текст: "))
 
 def text_processing(input_text):
     user_string = input_text.lower()
-    signs = '!,.?@#$%^&*(){}[]:;'
+    signs = '!,.?@#$%^&*(){}[]:;\"\''
     without_sign = ''.join(i for i in user_string if i not in signs)
     return without_sign
 
