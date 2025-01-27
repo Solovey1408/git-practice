@@ -21,14 +21,6 @@ def add_book(title, author, year):
         print(f"Книга '{title}' добавлена.")
 
 
-def remove_book_to_library(title):
-    my_library[title] = {
-        "Author": author,
-        "Year": year,
-        "Availability": None  # При добавлении новой книги статус наличия None
-    }
-
-
 # Удаление методом del
 def remove_book(title):
     if title not in my_library:
