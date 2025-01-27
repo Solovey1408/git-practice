@@ -12,6 +12,19 @@ def add_book_to_library(title, author, year):
         }
 
 
+def add_book(title, author, year):
+    if title in my_library:
+        update_question = input("Такая книга уже есть.Обновить информацию о данной книге?").lower()
+        if update_question == "да":
+            add_book_to_library(title, author, year)
+            print(f"Информация книги '{title}' обновлена.")
+        else:
+            print(f"Информация книги '{title}' не обновлена.")
+    else:
+        add_book_to_library(title, author, year)
+        print(f"Книга '{title}' добавлена.")
+
+
 my_library = {
     "Call of Cthulhu": {
         "Author": "Howard Lovecraft",
@@ -34,20 +47,6 @@ my_library = {
         "Availability": "In stock"
     }
 }
-
-
-def add_book(title, author, year):
-    if title in my_library:
-        update_question = input("Такая книга уже есть.Обновить информацию о данной книге?").lower()
-        if update_question == "да":
-            add_book_to_library(title, author, year)
-            print(f"Информация книги '{title}' обновлена.")
-        else:
-            print(f"Информация книги '{title}' не обновлена.")
-    else:
-        add_book_to_library(title, author, year)
-        print(f"Книга '{title}' добавлена.")
-
 
 add_book("The Beach", "Alex Garland", 1995)
 add_book("Alice’s Adventures in Wonderland", "Lewis Carroll", 1865)
