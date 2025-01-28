@@ -42,8 +42,10 @@
 def issue_book(title):
     if title not in my_library: #если книги нет в библиотеке
         print(f"Книга '{title}' отсутствует в библиотеке.") #сообщение что книги нет
+
     elif my_library[title]["Availability"] is False: #или если статус книги "выдана"
         print(f"Книга '{title}' уже выдана.")
+
     else: #в противном случае статус книги остается "выдана"
         my_library[title]["Availability"] = False
         print(f"Книга {title} выдана")
@@ -51,8 +53,10 @@ def issue_book(title):
 def return_book(title):
     if title not in my_library:
         print(f"Книга '{title}' отсутствует в библиотеке.")
+
     elif my_library[title]["Availability"] is True:
         print(f"Книга '{title}' уже находится в библиотеке.")
+
     else:
         my_library[title]["Availability"] = True
         print(f"Книга '{title}' возвращена в библиотеку.")
