@@ -31,13 +31,17 @@ def add_book_to_library(title, author, year):
 
 
 def add_book(title, author, year):
+
     if title in my_library:
         update_question = input("Такая книга уже есть.Обновить информацию о данной книге?").lower()
+
         if update_question == "да":
             add_book_to_library(title, author, year)
             print(f"Информация книги '{title}' обновлена.")
+
         else:
             print(f"Информация книги '{title}' не обновлена.")
+
     else:
         add_book_to_library(title, author, year)
         print(f"Книга '{title}' добавлена.")
@@ -48,8 +52,10 @@ def add_book(title, author, year):
 
 # Удаление методом del
 def remove_book(title):
+
     if title not in my_library:
         print(f"Книга '{title}' отсутствует в библиотеке.")
+
     else:
         del my_library[title]
         print(f"Книга '{title}' удалена.")
@@ -69,10 +75,8 @@ def remove_book(title):
 
 
 def issue_book(title):
-    if title not in my_library: #если книги нет в библиотеке
-        print(f"Книга '{title}' отсутствует в библиотеке.") #сообщение что книги нет
 
-    elif my_library[title]["Availability"] is False: #или если статус книги "выдана"
+    if my_library[title]["Availability"] is False: #или если статус книги "выдана"
         print(f"Книга '{title}' уже выдана.")
 
     else: #в противном случае статус книги остается "выдана"
@@ -81,6 +85,7 @@ def issue_book(title):
 
 
 def return_book(title):
+
     if title not in my_library:
         print(f"Книга '{title}' отсутствует в библиотеке.")
 
