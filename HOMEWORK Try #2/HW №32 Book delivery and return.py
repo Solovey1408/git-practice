@@ -1,32 +1,22 @@
-# Создайте словарь library, где ключами будут названия книг, а значениями — словари с информацией
-# о книге (автор, год издания, наличие).
-# После этого реализуйте первую функцию 'book_list_view(library)',
-# которая выводит в консоль названия всех книг в библиотеке. Если в библиотеке нет книг,
-# функция выводит сообщение об этом.
+def is_book_in_library(title):
+    if title not in my_library:
+        print(f"Книга '{title}' отсутствует в библиотеке.")
 
 
 def book_list_view(my_library):
 
-    for key in my_library:
-        print(f"{key}")
-
     if not my_library:
         print("В библиотеке нет книг.")
-
-
-# Продолжаем работать над созданием библиотеки:
-# Реализуйте функцию `add_book(title, author, year)`, которая добавляет книгу в словарь `library`.
-# Поле `наличие` при добавлении новой книги должно быть `None`
-# (означает, что книга в библиотеке, но не определен ее статус).
-# Если книга с таким названием уже существует, программа должна предложить обновить информацию о ней.
-# Функция должна вывести сообщение об успешном добавлении/обновлении информации о книге с ее названием
+    else:
+        for key in my_library:
+            print(f"{key}")
 
 
 def add_book_to_library(title, author, year):
     my_library[title] = {
         "Author": author,
         "Year": year,
-        "Availability": None  # При добавлении новой книги статус наличия None
+        "Availability": None
     }
 
 
@@ -40,38 +30,21 @@ def add_book(title, author, year):
             print(f"Информация книги '{title}' обновлена.")
 
         else:
-            print(f"Информация книги '{title}' не обновлена.")
+            is_book_in_library(title)
 
     else:
         add_book_to_library(title, author, year)
         print(f"Книга '{title}' добавлена.")
 
 
-# Реализуйте функцию `remove_book(title)`, которая удаляет книгу из словаря.
-# Если книга не найдена, программа должна вывести сообщение об этом.
-
 # Удаление методом del
 def remove_book(title):
 
-    if title not in my_library:
+    if is_book_in_library(title):
         print(f"Книга '{title}' отсутствует в библиотеке.")
-
     else:
         del my_library[title]
         print(f"Книга '{title}' удалена.")
-
-
-# #Удаление методом pop
-# def remove_book(title):
-#     if title not in my_library:
-#         print(f"Книга '{title}' отсутствует в библиотеке.")
-#     else:
-#         delete_library = my_library.pop(title)
-#         print(f"Книга '{title}' удалена.")
-
-
-# Реализуйте функцию issue_book(title), которая отмечает книгу как выданную (`наличие` становится `False`).
-# Реализуйте функцию return_book(title), которая отмечает книгу как вернувшуюся в библиотеку (`наличие` становится `True`).
 
 
 def issue_book(title):
@@ -85,11 +58,9 @@ def issue_book(title):
 
 
 def return_book(title):
+    is_book_in_library(title)
 
-    if title not in my_library:
-        print(f"Книга '{title}' отсутствует в библиотеке.")
-
-    elif my_library[title]["Availability"] is True:
+    if my_library[title]["Availability"] is True:
         print(f"Книга '{title}' уже находится в библиотеке.")
 
     else:
@@ -130,6 +101,6 @@ remove_book("The Beach")
 remove_book("The Beach")
 
 issue_book("Idiot")
-return_book("The Beach")
+return_book("Alice’s Adventures in Wonderland")
 
 print(my_library)
