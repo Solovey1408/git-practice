@@ -1,4 +1,4 @@
-def check_book_in_library(title):
+def check_book_in_library(title, my_library):
     return title in my_library
 
 
@@ -11,7 +11,7 @@ def book_list_view(my_library):
             print(f"{key}")
 
 
-def add_book_to_library(title, author, year):
+def add_book_to_library(title, author, year, my_library):
     my_library[title] = {
         "Author": author,
         "Year": year,
@@ -19,35 +19,35 @@ def add_book_to_library(title, author, year):
     }
 
 
-def add_book(title, author, year):
+def add_book(title, author, year, my_library):
 
-    if check_book_in_library(title):
+    if check_book_in_library(title, my_library):
         update_question = input("Такая книга уже есть.Обновить информацию о данной книге?").lower()
 
         if update_question == "да":
-            add_book_to_library(title, author, year)
+            add_book_to_library(title, author, year, my_library)
             print(f"Информация книги '{title}' обновлена.")
 
         else:
             print(f"Информация книги '{title}' не обновлена.")
 
     else:
-        add_book_to_library(title, author, year)
+        add_book_to_library(title, author, year, my_library)
         print(f"Книга '{title}' добавлена.")
 
 
 # Удаление методом del
-def remove_book(title):
+def remove_book(title, my_library):
 
-    if not check_book_in_library(title):
+    if not check_book_in_library(title, my_library):
         print(f"Книга '{title}' отсутствует в библиотеке.")
     else:
         del my_library[title]
         print(f"Книга '{title}' удалена.")
 
 
-def issue_book(title):
-    if not check_book_in_library(title):
+def issue_book(title, my_library):
+    if not check_book_in_library(title, my_library):
         print(f"Книга '{title}' отсутствует в библиотеке.")
 
     elif my_library[title]["Availability"] is False: #или если статус книги "выдана"
@@ -58,8 +58,8 @@ def issue_book(title):
         print(f"Книга {title} выдана")
 
 
-def return_book(title):
-    if not check_book_in_library(title):
+def return_book(title, my_library):
+    if not check_book_in_library(title, my_library):
         print(f"Книга '{title}' отсутствует в библиотеке.")
 
     if my_library[title]["Availability"] is True:
@@ -96,13 +96,13 @@ my_library = {
 
 book_view = book_list_view(my_library)
 
-add_book("The Beach", "Alex Garland", 1995)
-add_book("Alice’s Adventures in Wonderland", "Lewis Carroll", 1865)
+add_book("The Beach", "Alex Garland", 1995, my_library)
+add_book("Alice’s Adventures in Wonderland", "Lewis Carroll", 1865, my_library)
 
-remove_book("The Beach")
-remove_book("The Beach")
+remove_book("The Beach", my_library)
+remove_book("The Beach", my_library)
 
-issue_book("Idiot")
-return_book("Alice’s Adventures in Wonderland")
+issue_book("Idiot", my_library)
+return_book("Alice’s Adventures in Wonderland", my_library)
 
 print(my_library)
