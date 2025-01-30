@@ -7,6 +7,7 @@ def book_list_view(my_library):
         print("В библиотеке нет книг.")
 
     else:
+        print(f"Список книг в библиотеке:")
         for key in my_library:
             print(f"{key}")
 
@@ -94,7 +95,7 @@ my_library = {
 }
 
 
-book_view = book_list_view(my_library)
+book_list_view(my_library)
 
 add_book("The Beach", "Alex Garland", 1995, my_library)
 add_book("Alice’s Adventures in Wonderland", "Lewis Carroll", 1865, my_library)
