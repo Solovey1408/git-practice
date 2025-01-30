@@ -79,8 +79,12 @@ def find_book(title, my_library):
 
     else:
         book = my_library[title]
-        availability = True if book ["Availability"] else False
-        print(f"Книга '{title}' есть в библиотеке")
+        availability = "есть в библиотеке" if book["Availability"] else "выдана"
+        print(f"Информация о книге '{title}':")
+        print(f"Автор: {book['Author']}")
+        print(f"Год издания: {book['Year']}")
+        print(f"Статус: {availability}")
+
 
 my_library = {
     "Call of Cthulhu": {
