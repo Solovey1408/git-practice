@@ -71,29 +71,26 @@ def return_book(title, my_library):
         print(f"Книга '{title}' возвращена в библиотеку.")
 
 
-# В функции `find_book(title)` сделайте проверку на значение поля `наличие`.
-# Если оно `None`, выводите сообщение: "Книга в библиотеке, но ее статус не определен".
-# Если `False`, выводите: "Книга выдана". Если `True`, выводите: "Книга доступна".
 def find_book(title, my_library):
     if not check_book_in_library(title, my_library):
         print(f"Книги '{title}' нет в библиотеке.")
 
     else:
         book = my_library[title]
-        if book["Availability"] is None:
-            availability = "Книга в библиотеке, но ее статус не определен"
+        status_book = {
+        True: "Книга доступна",
+        False: "Книга выдана",
+        None: "Книга в библиотеке, но ее статус не определен"
+        }
 
-        elif book["Availability"] is False:
-            availability = "Книга выдана"
-
-        elif book["Availability"] is True:
-            availability = "Книга доступна"
+        availability = status_book[book["Availability"]]
 
         book_info = (
         f"Информация о книге '{title}':\n"
         f"Автор: {book['Author']}\n"
         f"Год издания: {book['Year']}\n"
         f"Статус: {availability}")
+
         print(book_info)
 
 
@@ -120,8 +117,51 @@ my_library = {
     }
 }
 
-book_list_view(my_library)
+menu = ('''Главное меню библиотеки
+1.Просмотреть список книг
+2.Добавить книгу
+3.Удалить книгу
+4.Выдать книгу
+5.Вернуть книгу
+6.Найти книгу
+7.Выйти из библиотеки''')
 
-add_book("Alice’s Adventures in Wonderland", "Lewis Carroll", 1865, my_library)
+print(menu)
 
-find_book("Alice’s Adventures in Wonderland", my_library)
+correct_options = '1234567'
+
+choice_options = input("Выберите номер опции из меню: ")
+
+while choice_options not in correct_options:
+    print("Неверный номер. Пожалуйста, выберите правильный номер.")
+    choice_options = input("Выберите номер опции из меню: ")
+
+if choice_options == '1':
+    book_list_view(my_library)
+
+elif choice_options == '2':
+    title = str(input("Введите название книги: ")).lower()
+    author = str(input("Введите автора книги: ")).lower()
+    year = int(input("Введите год выпуска книги: "))
+    add_book(title, author, year, my_library)
+
+elif choice_options == '3':
+    title = str(input("Введите название книги: ")).lower()
+    remove_book(title, my_library)
+
+elif choice_options == '4':
+    title = str(input("Введите название книги: ")).lower()
+    issue_book(title, my_library)
+
+elif choice_options == '5':
+    title = str(input("Введите название книги: ")).lower()
+    return_book(title, my_library)
+
+elif choice_options == '6':
+    title = str(input("Введите название книги: ")).lower()
+    find_book(title, my_library)
+
+elif choice_options == '7':
+    print("Закрываем библиотеку.")
+
+
