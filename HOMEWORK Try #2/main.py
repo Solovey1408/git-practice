@@ -3,13 +3,6 @@ class ToDoList:
     def __init__(self):
         self.tasks = []
 
-    def check_task(self, name):
-
-        for i in self.tasks:
-            if i["name"] == name:
-                return True
-        return False
-
     def add_task(self, name):
         self.tasks.append({"name": name, "complete": False})
         print(f"Задача '{name}' добавлена.")
@@ -18,7 +11,7 @@ class ToDoList:
 
         if not self.tasks:  # Проверяем, есть ли задачи в списке
             print("Задачи отсутствуют.")
-            return
+
 
         for i in self.tasks:
 
@@ -33,7 +26,7 @@ class ToDoList:
 
         if not self.tasks:  # Проверяем, есть ли задачи в списке
             print("Список задач пуст.")
-            return
+
 
         for i in self.tasks:
 
